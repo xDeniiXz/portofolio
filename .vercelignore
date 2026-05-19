@@ -1,0 +1,12 @@
+/node_modules
+/vendor
+/.git
+/.github
+/storage
+/tests
+/database
+/phpunit.xml
+/.env
+/.env.example
+/composer.lock
+/package-lock.json
