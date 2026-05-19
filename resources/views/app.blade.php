@@ -10,7 +10,11 @@
     <meta name="title" content="Mohamad Deni Yulio | Full-Stack Developer">
     <meta name="description" content="Portfolio of Mohamad Deni Yulio, Full-Stack Developer specializing in Laravel, React, Tailwind CSS, and modern web applications.">
     <meta name="author" content="Mohamad Deni Yulio">
-    <meta name="theme-color" content="#1e293b">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DeniiXz Portfolio">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
