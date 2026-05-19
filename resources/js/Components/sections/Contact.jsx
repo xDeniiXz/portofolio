@@ -133,55 +133,55 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-24">
+        <section id="contact" className="py-16">
             <Container>
                 <SectionTitle subtitle="Let's work together">
                     Contact Me
                 </SectionTitle>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
                     <AnimationWrapper>
                         <div className="space-y-6">
-                            <div className="bg-gray-800/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-gray-700">
-                                <h3 className="text-3xl font-bold mb-8 text-gray-100">
+                            <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-700">
+                                <h3 className="text-lg sm:text-xl font-semibold mb-6 text-gray-100">
                                     Contact Information
                                 </h3>
 
-                                <div className="space-y-6">
-                                    <div className="flex items-center space-x-4 text-gray-300">
-                                        <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center">
-                                            <FaEnvelope className="w-7 h-7 text-blue-400" />
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3 text-gray-300">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                                            <FaEnvelope className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                                         </div>
                                         <div>
-                                            <p className="text-sm text-gray-500">
+                                            <p className="text-xs text-gray-500">
                                                 Email
                                             </p>
-                                            <p className="text-lg font-medium">
+                                            <p className="text-sm sm:text-base font-medium">
                                                 mdeniyulio@gmail.com
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center space-x-4 text-gray-300">
-                                        <div className="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center">
-                                            <FaMapMarkerAlt className="w-7 h-7 text-purple-400" />
+                                    <div className="flex items-center gap-3 text-gray-300">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                                            <FaMapMarkerAlt className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
                                         </div>
                                         <div>
-                                            <p className="text-sm text-gray-500">
+                                            <p className="text-xs text-gray-500">
                                                 Location
                                             </p>
-                                            <p className="text-lg font-medium">
+                                            <p className="text-sm sm:text-base font-medium">
                                                 Bandung, Jawa Barat
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="mt-10">
-                                    <h4 className="text-xl font-semibold mb-6 text-gray-200">
+                                <div className="mt-6">
+                                    <h4 className="text-sm sm:text-base font-semibold mb-4 text-gray-200">
                                         Follow Me
                                     </h4>
-                                    <div className="flex space-x-4">
+                                    <div className="flex gap-3">
                                         {[
                                             {
                                                 icon: FaGithub,
@@ -205,12 +205,11 @@ export default function Contact() {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 whileHover={{
-                                                    scale: 1.15,
-                                                    y: -5,
+                                                    scale: 1.1,
                                                 }}
-                                                className={`w-14 h-14 rounded-2xl flex items-center justify-center text-gray-300 ${social.color} transition-all duration-300`}
+                                                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-gray-300 ${social.color} transition-all duration-200`}
                                             >
-                                                <social.icon className="w-7 h-7" />
+                                                <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                                             </motion.a>
                                         ))}
                                     </div>
@@ -220,14 +219,14 @@ export default function Contact() {
                     </AnimationWrapper>
 
                     <AnimationWrapper delay={0.2}>
-                        <div className="bg-gray-800/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-gray-700">
-                            <h3 className="text-3xl font-bold mb-8 text-gray-100">
+                        <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-700">
+                            <h3 className="text-lg sm:text-xl font-semibold mb-6 text-gray-100">
                                 Send a Message
                             </h3>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form onSubmit={handleSubmit} className="space-y-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-3">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
                                         Name
                                     </label>
                                     <input
@@ -238,14 +237,14 @@ export default function Contact() {
                                         disabled={
                                             !hasReadNotice || isOnCooldown
                                         }
-                                        className="w-full px-5 py-4 rounded-2xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                                         placeholder="Your name"
                                         required
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-3">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
                                         Email
                                     </label>
                                     <input
@@ -256,25 +255,25 @@ export default function Contact() {
                                         disabled={
                                             !hasReadNotice || isOnCooldown
                                         }
-                                        className="w-full px-5 py-4 rounded-2xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                                         placeholder="your@email.com"
                                         required
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-3">
+                                    <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
                                         Message
                                     </label>
                                     <textarea
-                                        rows={6}
+                                        rows={4}
                                         name="message"
                                         value={formData.message}
                                         onChange={handleInputChange}
                                         disabled={
                                             !hasReadNotice || isOnCooldown
                                         }
-                                        className="w-full px-5 py-4 rounded-2xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                                         placeholder="Your message..."
                                         required
                                     ></textarea>
@@ -286,7 +285,7 @@ export default function Contact() {
                                         onClick={() =>
                                             setShowImportantNotice(true)
                                         }
-                                        className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
+                                        className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
                                     >
                                         Read Important Notice
                                     </button>
@@ -313,7 +312,7 @@ export default function Contact() {
                                             ? { scale: 0.98 }
                                             : {}
                                     }
-                                    className={`w-full py-5 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 ${
+                                    className={`w-full py-2.5 rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 ${
                                         !hasReadNotice ||
                                         isOnCooldown ||
                                         isSubmitting
@@ -323,19 +322,19 @@ export default function Contact() {
                                 >
                                     {isOnCooldown ? (
                                         <>
-                                            <FaInfoCircle className="w-5 h-5" />
+                                            <FaInfoCircle className="w-4 h-4" />
                                             <span>
                                                 Please wait {cooldownTime} min
                                             </span>
                                         </>
                                     ) : isSubmitting ? (
                                         <>
-                                            <FaSpinner className="w-5 h-5 animate-spin" />
+                                            <FaSpinner className="w-4 h-4 animate-spin" />
                                             <span>Sending...</span>
                                         </>
                                     ) : !hasReadNotice ? (
                                         <>
-                                            <FaInfoCircle className="w-5 h-5" />
+                                            <FaInfoCircle className="w-4 h-4" />
                                             <span>
                                                 Read Important Notice First
                                             </span>
@@ -343,7 +342,7 @@ export default function Contact() {
                                     ) : (
                                         <>
                                             <span>Send Message</span>
-                                            <FaPaperPlane className="w-5 h-5" />
+                                            <FaPaperPlane className="w-4 h-4" />
                                         </>
                                     )}
                                 </motion.button>
@@ -371,11 +370,11 @@ export default function Contact() {
                                     transition={{ duration: 0.15 }}
                                     className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none p-4"
                                 >
-                                    <div className="pointer-events-auto bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700 max-w-md w-full overflow-hidden">
-                                        <div className="p-8">
-                                            <div className="flex items-start justify-between mb-6">
-                                                <div className="bg-yellow-500/10 w-16 h-16 rounded-2xl flex items-center justify-center">
-                                                    <FaInfoCircle className="w-10 h-10 text-yellow-400" />
+                                    <div className="pointer-events-auto bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-700 max-w-md w-full overflow-hidden">
+                                        <div className="p-6">
+                                            <div className="flex items-start justify-between mb-4">
+                                                <div className="bg-yellow-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                                                    <FaInfoCircle className="w-6 h-6 text-yellow-400" />
                                                 </div>
                                                 <button
                                                     onClick={() =>
@@ -383,16 +382,16 @@ export default function Contact() {
                                                             false,
                                                         )
                                                     }
-                                                    className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700 rounded-xl"
+                                                    className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-gray-700 rounded-lg"
                                                 >
-                                                    <FaTimes className="w-5 h-5" />
+                                                    <FaTimes className="w-4 h-4" />
                                                 </button>
                                             </div>
 
-                                            <h3 className="text-2xl font-bold text-gray-100 mb-4">
+                                            <h3 className="text-xl font-semibold text-gray-100 mb-3">
                                                 Important Notice
                                             </h3>
-                                            <p className="text-gray-300 leading-relaxed mb-6">
+                                            <p className="text-gray-300 text-sm leading-relaxed mb-4">
                                                 To prevent spam, you can only
                                                 send one message every 30
                                                 minutes. Please review your
@@ -400,30 +399,30 @@ export default function Contact() {
                                                 sending.
                                             </p>
 
-                                            <ul className="text-gray-300 space-y-2 mb-8">
+                                            <ul className="text-gray-300 text-sm space-y-1.5 mb-6">
                                                 <li className="flex items-start gap-2">
-                                                    <span className="text-yellow-400 mt-1">
+                                                    <span className="text-yellow-400 mt-0.5">
                                                         •
                                                     </span>
                                                     Make sure your email address
                                                     is correct
                                                 </li>
                                                 <li className="flex items-start gap-2">
-                                                    <span className="text-yellow-400 mt-1">
+                                                    <span className="text-yellow-400 mt-0.5">
                                                         •
                                                     </span>
                                                     Double-check your message
                                                     content
                                                 </li>
                                                 <li className="flex items-start gap-2">
-                                                    <span className="text-yellow-400 mt-1">
+                                                    <span className="text-yellow-400 mt-0.5">
                                                         •
                                                     </span>
                                                     You'll need to complete a
                                                     simple verification
                                                 </li>
                                                 <li className="flex items-start gap-2">
-                                                    <span className="text-yellow-400 mt-1">
+                                                    <span className="text-yellow-400 mt-0.5">
                                                         •
                                                     </span>
                                                     After sending, you'll need
@@ -439,7 +438,7 @@ export default function Contact() {
                                                         false,
                                                     );
                                                 }}
-                                                className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
+                                                className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
                                             >
                                                 I Understand
                                             </button>

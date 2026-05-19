@@ -69,25 +69,25 @@ const skills = [
 
 export default function Skills() {
     return (
-        <section id="skills" className="py-24">
+        <section id="skills" className="py-16">
             <Container>
                 <SectionTitle subtitle="Technologies I work with">
                     Full-Stack Tools
                 </SectionTitle>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
                     {skills.map((skill, index) => (
-                        <AnimationWrapper key={skill.name} delay={index * 0.08}>
+                        <AnimationWrapper key={skill.name} delay={index * 0.05}>
                             <motion.div
-                                whileHover={{ scale: 1.08, y: -10, rotate: 2 }}
-                                className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-center border border-gray-700"
+                                whileHover={{ scale: 1.05, y: -3 }}
+                                className="bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 sm:p-5 shadow-lg text-center border border-gray-700"
                             >
                                 <div
-                                    className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-r ${skill.color} text-white text-2xl font-bold mb-4 shadow-lg`}
+                                    className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-r ${skill.color} text-white mb-2 sm:mb-3 shadow-md`}
                                 >
-                                    <skill.icon className="w-10 h-10" />
+                                    <skill.icon className="w-6 h-6 sm:w-7 sm:h-7" />
                                 </div>
-                                <p className="font-semibold text-gray-200 text-lg">
+                                <p className="font-medium text-gray-200 text-xs sm:text-sm">
                                     {skill.name}
                                 </p>
                             </motion.div>

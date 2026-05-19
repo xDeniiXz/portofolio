@@ -10,10 +10,10 @@ import {
 
 const Toast = ({ isVisible, onClose, message, type = "info", title }) => {
     const icons = {
-        info: <FaInfoCircle className="w-10 h-10" />,
-        success: <FaCheckCircle className="w-10 h-10" />,
-        warning: <FaExclamationCircle className="w-10 h-10" />,
-        loading: <FaSpinner className="w-10 h-10 animate-spin" />,
+        info: <FaInfoCircle className="w-6 h-6" />,
+        success: <FaCheckCircle className="w-6 h-6" />,
+        warning: <FaExclamationCircle className="w-6 h-6" />,
+        loading: <FaSpinner className="w-6 h-6 animate-spin" />,
     };
 
     const colors = {
@@ -56,11 +56,11 @@ const Toast = ({ isVisible, onClose, message, type = "info", title }) => {
                         transition={{ duration: 0.15 }}
                         className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none p-4"
                     >
-                        <div className="pointer-events-auto bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700 max-w-md w-full overflow-hidden">
-                            <div className="p-8">
-                                <div className="flex items-start justify-between mb-6">
+                        <div className="pointer-events-auto bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-700 max-w-md w-full overflow-hidden">
+                            <div className="p-6">
+                                <div className="flex items-start justify-between mb-4">
                                     <div
-                                        className={`${bgColors[type]} w-16 h-16 rounded-2xl flex items-center justify-center`}
+                                        className={`${bgColors[type]} w-12 h-12 rounded-xl flex items-center justify-center`}
                                     >
                                         <div className={colors[type]}>
                                             {icons[type]}
@@ -69,24 +69,24 @@ const Toast = ({ isVisible, onClose, message, type = "info", title }) => {
                                     {type !== "loading" && (
                                         <button
                                             onClick={onClose}
-                                            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700 rounded-xl"
+                                            className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-gray-700 rounded-lg"
                                         >
-                                            <FaTimes className="w-5 h-5" />
+                                            <FaTimes className="w-4 h-4" />
                                         </button>
                                     )}
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-gray-100 mb-2">
+                                <h3 className="text-lg sm:text-xl font-semibold text-gray-100 mb-2">
                                     {title || defaultTitle[type]}
                                 </h3>
-                                <p className="text-gray-300 leading-relaxed">
+                                <p className="text-gray-300 text-sm leading-relaxed">
                                     {message}
                                 </p>
 
                                 {type !== "loading" && (
                                     <button
                                         onClick={onClose}
-                                        className="mt-8 w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
+                                        className="mt-6 w-full py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
                                     >
                                         Got it
                                     </button>
