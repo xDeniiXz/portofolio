@@ -148,7 +148,7 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className="py-16 sm:py-20 lg:py-24 bg-gray-900/50"
+            className="py-16 sm:py-20 lg:py-24 bg-gray-900/50 scroll-mt-20"
         >
             <Container>
                 <SectionTitle subtitle="Some things I've built">

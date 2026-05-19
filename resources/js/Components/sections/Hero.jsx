@@ -49,7 +49,7 @@ export default function Hero() {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center justify-center pt-20 pb-12 sm:pt-24 sm:pb-16"
+            className="min-h-screen flex items-center justify-center pt-20 pb-12 sm:pt-24 sm:pb-16 scroll-mt-20"
         >
             <Container>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">

@@ -5,7 +5,7 @@ import AnimationWrapper from "../ui/AnimationWrapper";
 
 export default function About() {
     return (
-        <section id="about" className="py-16 bg-gray-900/50">
+        <section id="about" className="py-16 bg-gray-900/50 scroll-mt-20">
             <Container>
                 <SectionTitle subtitle="Get to know me better">
                     About Me

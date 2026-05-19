@@ -40,7 +40,10 @@ export default function Certificate() {
     const [hasError, setHasError] = useState({});
 
     return (
-        <section id="certificates" className="py-16 bg-gray-900/50">
+        <section
+            id="certificates"
+            className="py-16 sm:py-20 bg-gray-900/50 scroll-mt-20"
+        >
             <Container>
                 <SectionTitle subtitle="My achievements & certifications">
                     Certificates

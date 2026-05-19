@@ -41,7 +41,7 @@ const techHighlights = [
 
 export default function Resume() {
     return (
-        <section id="resume" className="py-16">
+        <section id="resume" className="py-16 scroll-mt-20">
             <Container>
                 <SectionTitle subtitle="My professional journey">
                     Resume

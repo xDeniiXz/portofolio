@@ -133,7 +133,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-16">
+        <section id="contact" className="py-16 scroll-mt-20">
             <Container>
                 <SectionTitle subtitle="Let's work together">
                     Contact Me

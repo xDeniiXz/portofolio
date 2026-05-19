@@ -69,7 +69,7 @@ const skills = [
 
 export default function Skills() {
     return (
-        <section id="skills" className="py-16 sm:py-20">
+        <section id="skills" className="py-16 sm:py-20 scroll-mt-20">
             <Container>
                 <SectionTitle subtitle="Technologies I work with">
                     Full-Stack Tools
