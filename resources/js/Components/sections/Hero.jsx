@@ -49,17 +49,17 @@ export default function Hero() {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center justify-center pt-24 pb-16"
+            className="min-h-screen flex items-center justify-center pt-20 pb-12 sm:pt-24 sm:pb-16"
         >
             <Container>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                     <AnimationWrapper>
                         <div className="text-left">
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, ease: "easeOut" }}
-                                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                                className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
                             >
                                 Mohamad Deni Yulio
                             </motion.h1>
@@ -72,7 +72,7 @@ export default function Hero() {
                                     ease: "easeOut",
                                     delay: 0.15,
                                 }}
-                                className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-4 h-8"
+                                className="text-lg sm:text-xl md:text-xl lg:text-2xl text-gray-300 mb-3 h-7"
                             >
                                 <span>{displayText}</span>
                                 <span className="animate-pulse text-blue-400">
@@ -88,7 +88,7 @@ export default function Hero() {
                                     ease: "easeOut",
                                     delay: 0.3,
                                 }}
-                                className="text-sm sm:text-base md:text-lg text-gray-400 mb-8 max-w-lg"
+                                className="text-sm sm:text-base text-gray-400 mb-6 max-w-lg"
                             >
                                 Passionate about building modern web
                                 applications with clean code and elegant
@@ -104,13 +104,13 @@ export default function Hero() {
                                     ease: "easeOut",
                                     delay: 0.45,
                                 }}
-                                className="flex flex-wrap gap-3 mb-8"
+                                className="flex flex-wrap gap-3 mb-6"
                             >
                                 <motion.a
                                     href="#projects"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2"
+                                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2"
                                 >
                                     <span>View Projects</span>
                                     <FaArrowRight className="w-4 h-4" />
@@ -119,7 +119,7 @@ export default function Hero() {
                                     href="#contact"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="px-5 py-2.5 border border-gray-700 text-gray-300 rounded-xl font-medium text-sm hover:border-blue-500 hover:text-blue-400 transition-all duration-200"
+                                    className="px-6 py-3 border border-gray-700 text-gray-300 rounded-xl font-medium text-sm hover:border-blue-500 hover:text-blue-400 transition-all duration-200"
                                 >
                                     Contact Me
                                 </motion.a>
@@ -133,7 +133,7 @@ export default function Hero() {
                                     ease: "easeOut",
                                     delay: 0.6,
                                 }}
-                                className="flex gap-4"
+                                className="flex gap-5"
                             >
                                 {[
                                     {
@@ -158,7 +158,7 @@ export default function Hero() {
                                         whileHover={{ scale: 1.1 }}
                                         className={`text-gray-500 ${social.color} transition-colors duration-200`}
                                     >
-                                        <social.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                                        <social.icon className="w-6 h-6 sm:w-7 sm:h-7" />
                                     </motion.a>
                                 ))}
                             </motion.div>
@@ -173,7 +173,7 @@ export default function Hero() {
                             className="relative"
                         >
                             <div className="relative z-10">
-                                <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto rounded-full overflow-hidden shadow-xl border-2 border-gray-700">
+                                <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto rounded-full overflow-hidden shadow-xl border-2 border-gray-700">
                                     <img
                                         src="/images/profile.jpg"
                                         alt="Profile"
@@ -195,7 +195,7 @@ export default function Hero() {
                                 }}
                                 className="absolute inset-0 -z-10"
                             >
-                                <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-25 blur-2xl" />
+                                <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-25 blur-2xl" />
                             </motion.div>
                         </motion.div>
                     </AnimationWrapper>

@@ -48,7 +48,7 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
             whileHover={{ y: -4 }}
             className="bg-gray-800/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-700 flex flex-col h-full"
         >
-            <div className="h-32 sm:h-36 overflow-hidden flex-shrink-0">
+            <div className="h-36 sm:h-40 overflow-hidden flex-shrink-0">
                 <img
                     src={project.image}
                     alt={project.title}
@@ -56,20 +56,20 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
                 />
             </div>
 
-            <div className="p-4 flex flex-col flex-grow">
-                <h3 className="text-base sm:text-lg font-semibold mb-2 text-gray-100 line-clamp-1">
+            <div className="p-4 sm:p-5 flex flex-col flex-grow">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-100 line-clamp-1">
                     {project.title}
                 </h3>
 
-                <p className="text-gray-400 text-xs sm:text-sm mb-3 leading-relaxed line-clamp-2 flex-grow">
+                <p className="text-gray-400 text-sm sm:text-base mb-3 leading-relaxed line-clamp-2 flex-grow">
                     {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 mb-3">
+                <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tech.map((tech) => (
                         <span
                             key={tech}
-                            className="px-2.5 py-0.5 bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs rounded-full border border-blue-500/20"
+                            className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs sm:text-sm rounded-full border border-blue-500/20"
                         >
                             {tech}
                         </span>
@@ -82,9 +82,9 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
                             onClick={() => onCodeClick(project)}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-700 transition-all duration-200 text-xs sm:text-sm"
+                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gray-700/50 text-gray-300 rounded-xl hover:bg-gray-700 transition-all duration-200 text-sm"
                         >
-                            <FaCode className="w-3.5 h-3.5" />
+                            <FaCode className="w-4 h-4" />
                             <span className="font-medium">Code</span>
                         </motion.button>
                     ) : (
@@ -94,9 +94,9 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-700/50 text-gray-300 rounded-lg hover:bg-gray-700 transition-all duration-200 text-xs sm:text-sm"
+                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gray-700/50 text-gray-300 rounded-xl hover:bg-gray-700 transition-all duration-200 text-sm"
                         >
-                            <FaCode className="w-3.5 h-3.5" />
+                            <FaCode className="w-4 h-4" />
                             <span className="font-medium">Code</span>
                         </motion.a>
                     )}
@@ -105,9 +105,9 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
                         onClick={() => onDemoClick(project)}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-md text-xs sm:text-sm"
+                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-md text-sm"
                     >
-                        <FaExternalLinkAlt className="w-3.5 h-3.5" />
+                        <FaExternalLinkAlt className="w-4 h-4" />
                         <span className="font-medium">Demo</span>
                     </motion.button>
                 </div>
@@ -146,13 +146,16 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="py-24 bg-gray-900/50">
+        <section
+            id="projects"
+            className="py-16 sm:py-20 lg:py-24 bg-gray-900/50"
+        >
             <Container>
                 <SectionTitle subtitle="Some things I've built">
                     Projects
                 </SectionTitle>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                     {projects.map((project, index) => (
                         <AnimationWrapper key={project.id} delay={index * 0.12}>
                             <ProjectCard
