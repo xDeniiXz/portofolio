@@ -1,16 +1,15 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "public/index.php",
-            "use": "vercel-php@0.7.3"
+    "outputDirectory": "public",
+    "functions": {
+        "public/index.php": {
+            "runtime": "vercel-php@0.9.0"
         }
-    ],
+    },
     "routes": [
         {
             "src": "/(.*)",
             "dest": "public/index.php"
         }
-    ],
-    "outputDirectory": "public"
+    ]
 }
