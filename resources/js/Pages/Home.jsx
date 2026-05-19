@@ -1,4 +1,5 @@
 import React from "react";
+import { Head } from "@inertiajs/react";
 import MainLayout from "../Layouts/MainLayout";
 import Hero from "../Components/sections/Hero";
 import About from "../Components/sections/About";
@@ -11,6 +12,7 @@ import Contact from "../Components/sections/Contact";
 export default function Home() {
     return (
         <MainLayout>
+            <Head title="Mohamad Deni Yulio | Full-Stack Developer" />
             <Hero />
             <About />
             <Resume />
