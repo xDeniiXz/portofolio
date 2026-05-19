@@ -1,0 +1,176 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { FaCode, FaExternalLinkAlt } from "react-icons/fa";
+import Container from "../ui/Container";
+import SectionTitle from "../ui/SectionTitle";
+import AnimationWrapper from "../ui/AnimationWrapper";
+import Toast from "../ui/Toast";
+
+const projects = [
+    {
+        id: 1,
+        title: "Grocery Store Web App",
+        description:
+            "Back-office tool for fast-paced daily operations to help staff complete tasks efficiently.",
+        tech: ["Laravel", "Tailwind", "Laragon", "MySQL"],
+        image: "/images/project1.png",
+        github: "https://github.com/xDeniiXz/xzgg-store",
+        demo: "#",
+        isPrivate: false,
+    },
+    {
+        id: 2,
+        title: "Online Library Web App",
+        description:
+            "Dual-role application for both students and librarians with different user experiences.",
+        tech: ["Laravel", "Tailwind", "Laragon", "MySQL"],
+        image: "/images/project2.png",
+        github: "https://github.com/xDeniiXz/xz-library",
+        demo: "#",
+        isPrivate: false,
+    },
+    {
+        id: 3,
+        title: "Transport Management System",
+        description:
+            "Yard management module for a logistics TMS, handling trucks, trailers, and containers.",
+        tech: ["Vue", "NestJS", "PostgreSQL", "Docker"],
+        image: "/images/project3.png",
+        github: "#",
+        demo: "#",
+        isPrivate: true,
+    },
+];
+
+const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
+    return (
+        <motion.div
+            whileHover={{ y: -8 }}
+            className="bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-gray-700 flex flex-col h-full"
+        >
+            <div className="h-44 overflow-hidden flex-shrink-0">
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+            </div>
+
+            <div className="p-5 flex flex-col flex-grow">
+                <h3 className="text-lg font-bold mb-2 text-gray-100 line-clamp-1">
+                    {project.title}
+                </h3>
+
+                <p className="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2 flex-grow">
+                    {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech) => (
+                        <span
+                            key={tech}
+                            className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20"
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+
+                <div className="flex space-x-3 mt-auto">
+                    {project.isPrivate ? (
+                        <motion.button
+                            onClick={() => onCodeClick(project)}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1 flex items-center justify-center space-x-2 px-4 py-2.5 bg-gray-700/50 text-gray-300 rounded-xl hover:bg-gray-700 transition-all duration-300 text-sm"
+                        >
+                            <FaCode className="w-4 h-4" />
+                            <span className="font-medium">Code</span>
+                        </motion.button>
+                    ) : (
+                        <motion.a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1 flex items-center justify-center space-x-2 px-4 py-2.5 bg-gray-700/50 text-gray-300 rounded-xl hover:bg-gray-700 transition-all duration-300 text-sm"
+                        >
+                            <FaCode className="w-4 h-4" />
+                            <span className="font-medium">Code</span>
+                        </motion.a>
+                    )}
+
+                    <motion.button
+                        onClick={() => onDemoClick(project)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex-1 flex items-center justify-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg text-sm"
+                    >
+                        <FaExternalLinkAlt className="w-4 h-4" />
+                        <span className="font-medium">Demo</span>
+                    </motion.button>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
+export default function Projects() {
+    const [toast, setToast] = useState({
+        isVisible: false,
+        message: "",
+        type: "info",
+    });
+
+    const handleDemoClick = () => {
+        setToast({
+            isVisible: true,
+            message: "This demo is still under development.",
+            type: "info",
+        });
+    };
+
+    const handleCodeClick = (project) => {
+        if (project.isPrivate) {
+            setToast({
+                isVisible: true,
+                message: "Sorry, this code is private.",
+                type: "warning",
+            });
+        }
+    };
+
+    const handleToastClose = () => {
+        setToast((prev) => ({ ...prev, isVisible: false }));
+    };
+
+    return (
+        <section id="projects" className="py-24 bg-gray-900/50">
+            <Container>
+                <SectionTitle subtitle="Some things I've built">
+                    Projects
+                </SectionTitle>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {projects.map((project, index) => (
+                        <AnimationWrapper key={project.id} delay={index * 0.12}>
+                            <ProjectCard
+                                project={project}
+                                onDemoClick={handleDemoClick}
+                                onCodeClick={handleCodeClick}
+                            />
+                        </AnimationWrapper>
+                    ))}
+                </div>
+            </Container>
+
+            <Toast
+                isVisible={toast.isVisible}
+                onClose={handleToastClose}
+                message={toast.message}
+                type={toast.type}
+            />
+        </section>
+    );
+}
