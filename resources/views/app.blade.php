@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
     <title inertia>Mohamad Deni Yulio | Full-Stack Developer</title>

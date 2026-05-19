@@ -56,12 +56,12 @@ export default function Navbar() {
         <>
             <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/85 backdrop-blur-xl border-b border-gray-800">
                 <Container>
-                    <div className="flex justify-between items-center h-16 lg:h-20">
+                    <div className="flex justify-between items-center h-20">
                         <motion.a
                             href="#home"
                             onClick={(e) => handleScroll(e, "#home")}
                             whileHover={{ scale: 1.05 }}
-                            className="text-xl lg:text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                            className="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
                         >
                             DeniiXz
                         </motion.a>
@@ -74,7 +74,9 @@ export default function Navbar() {
                                     <motion.a
                                         key={link.name}
                                         href={link.href}
-                                        onClick={(e) => handleScroll(e, link.href)}
+                                        onClick={(e) =>
+                                            handleScroll(e, link.href)
+                                        }
                                         whileHover={{ y: -2 }}
                                         className={clsx(
                                             "text-sm font-semibold transition-all duration-300 relative",
@@ -99,7 +101,11 @@ export default function Navbar() {
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className="lg:hidden p-2 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
                         >
-                            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                            {isMenuOpen ? (
+                                <X className="w-6 h-6" />
+                            ) : (
+                                <Menu className="w-6 h-6" />
+                            )}
                         </button>
                     </div>
                 </Container>
@@ -112,7 +118,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-x-0 top-16 z-40 bg-gray-900/98 backdrop-blur-xl border-b border-gray-800 lg:hidden"
+                        className="fixed inset-x-0 top-20 z-40 bg-gray-900/98 backdrop-blur-xl border-b border-gray-800 lg:hidden"
                     >
                         <div className="py-4 px-6 space-y-2">
                             {navLinks.map((link) => {
@@ -122,7 +128,9 @@ export default function Navbar() {
                                     <motion.a
                                         key={link.name}
                                         href={link.href}
-                                        onClick={(e) => handleScroll(e, link.href)}
+                                        onClick={(e) =>
+                                            handleScroll(e, link.href)
+                                        }
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         className={clsx(
@@ -133,7 +141,9 @@ export default function Navbar() {
                                         )}
                                     >
                                         {link.name}
-                                        {isActive && <ChevronRight className="w-4 h-4" />}
+                                        {isActive && (
+                                            <ChevronRight className="w-4 h-4" />
+                                        )}
                                     </motion.a>
                                 );
                             })}
