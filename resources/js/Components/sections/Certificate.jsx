@@ -84,7 +84,7 @@ export default function Certificate() {
                                             </div>
                                         </>
                                     ) : (
-                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 flex items-center justify-center">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/10 flex items-center justify-center">
                                             <Award className="w-16 h-16 text-gray-600" />
                                             <div className="absolute inset-0 flex items-center justify-center flex-col">
                                                 <p className="text-gray-500 text-sm font-semibold">

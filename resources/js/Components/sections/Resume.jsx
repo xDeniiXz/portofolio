@@ -68,7 +68,7 @@ export default function Resume() {
                                         download
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
+                                        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
                                     >
                                         <FaDownload className="w-4 h-4" />
                                         Download CV (ID)
@@ -147,7 +147,7 @@ export default function Resume() {
                         <AnimationWrapper delay={0.2}>
                             <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-700">
                                 <h3 className="text-base sm:text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                                    <FaGraduationCap className="text-purple-400 w-4 h-4" />
+                                    <FaGraduationCap className="text-blue-400 w-4 h-4" />
                                     Education
                                 </h3>
                                 <div className="space-y-5">
@@ -158,10 +158,10 @@ export default function Resume() {
                                             whileInView={{ opacity: 1, x: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ delay: index * 0.08 }}
-                                            className="relative pl-6 border-l border-purple-500"
+                                            className="relative pl-6 border-l border-blue-500"
                                         >
-                                            <div className="absolute -left-1.5 top-0 w-3 h-3 bg-purple-500 rounded-full" />
-                                            <div className="mb-0.5 text-purple-400 text-xs sm:text-sm font-semibold">
+                                            <div className="absolute -left-1.5 top-0 w-3 h-3 bg-blue-500 rounded-full" />
+                                            <div className="mb-0.5 text-blue-400 text-xs sm:text-sm font-semibold">
                                                 {edu.year}
                                             </div>
                                             <h4 className="text-white font-semibold text-sm sm:text-base">

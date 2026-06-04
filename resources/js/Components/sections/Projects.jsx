@@ -105,7 +105,7 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
                         onClick={() => onDemoClick(project)}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-md text-sm"
+                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 shadow-md text-sm"
                     >
                         <FaExternalLinkAlt className="w-4 h-4" />
                         <span className="font-medium">Demo</span>

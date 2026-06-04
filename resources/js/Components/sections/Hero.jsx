@@ -59,7 +59,7 @@ export default function Hero() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, ease: "easeOut" }}
-                                className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                                className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
                             >
                                 Mohamad Deni Yulio
                             </motion.h1>
@@ -110,7 +110,7 @@ export default function Hero() {
                                     href="#projects"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2"
+                                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2"
                                 >
                                     <span>View Projects</span>
                                     <FaArrowRight className="w-4 h-4" />
@@ -149,7 +149,7 @@ export default function Hero() {
                                     {
                                         icon: FaInstagram,
                                         href: "https://www.instagram.com/dnii.xz?igsh=cjFkYnJ0cXd5NGlo",
-                                        color: "hover:text-pink-400",
+                                        color: "hover:text-blue-400",
                                     },
                                 ].map((social, index) => (
                                     <motion.a
@@ -195,7 +195,7 @@ export default function Hero() {
                                 }}
                                 className="absolute inset-0 -z-10"
                             >
-                                <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-25 blur-2xl" />
+                                <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-blue-600 opacity-25 blur-2xl" />
                             </motion.div>
                         </motion.div>
                     </AnimationWrapper>

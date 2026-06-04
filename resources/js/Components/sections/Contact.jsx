@@ -163,8 +163,8 @@ export default function Contact() {
                                     </div>
 
                                     <div className="flex items-center gap-3 text-gray-300">
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
-                                            <FaMapMarkerAlt className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                                            <FaMapMarkerAlt className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                                         </div>
                                         <div>
                                             <p className="text-xs text-gray-500">
@@ -196,7 +196,7 @@ export default function Contact() {
                                             {
                                                 icon: FaInstagram,
                                                 href: "https://www.instagram.com/dnii.xz?igsh=cjFkYnJ0cXd5NGlo",
-                                                color: "bg-pink-500/10 hover:bg-pink-500/20",
+                                                color: "bg-blue-500/10 hover:bg-blue-500/20",
                                             },
                                         ].map((social, index) => (
                                             <motion.a
@@ -285,7 +285,7 @@ export default function Contact() {
                                         onClick={() =>
                                             setShowImportantNotice(true)
                                         }
-                                        className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
+                                        className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
                                     >
                                         Read Important Notice
                                     </button>
@@ -317,7 +317,7 @@ export default function Contact() {
                                         isOnCooldown ||
                                         isSubmitting
                                             ? "bg-gray-700 text-gray-400 cursor-not-allowed"
-                                            : "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+                                            : "bg-blue-600 hover:bg-blue-700 text-white"
                                     }`}
                                 >
                                     {isOnCooldown ? (
@@ -438,7 +438,7 @@ export default function Contact() {
                                                         false,
                                                     );
                                                 }}
-                                                className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
+                                                className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
                                             >
                                                 I Understand
                                             </button>

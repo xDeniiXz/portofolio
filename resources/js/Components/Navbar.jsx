@@ -61,7 +61,7 @@ export default function Navbar() {
                             href="#home"
                             onClick={(e) => handleScroll(e, "#home")}
                             whileHover={{ scale: 1.05 }}
-                            className="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                            className="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
                         >
                             DeniiXz
                         </motion.a>
@@ -89,7 +89,7 @@ export default function Navbar() {
                                         {isActive && (
                                             <motion.div
                                                 layoutId="activeNavLink"
-                                                className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                                                className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
                                             />
                                         )}
                                     </motion.a>

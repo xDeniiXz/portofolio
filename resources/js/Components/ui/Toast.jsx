@@ -86,7 +86,7 @@ const Toast = ({ isVisible, onClose, message, type = "info", title }) => {
                                 {type !== "loading" && (
                                     <button
                                         onClick={onClose}
-                                        className="mt-6 w-full py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
+                                        className="mt-6 w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
                                     >
                                         Got it
                                     </button>
