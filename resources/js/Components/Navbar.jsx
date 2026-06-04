@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
 import { Menu, X, Code2 } from "lucide-react";
@@ -16,24 +16,58 @@ const navLinks = [
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const visibilityRatios = useRef({});
+    const scrollTimeoutRef = useRef(null);
+
+    // Handle click on nav links: set active immediately
+    const handleScroll = (e, href) => {
+        e.preventDefault();
+        setIsMenuOpen(false);
+        const sectionId = href.substring(1);
+        setActiveSection(sectionId);
+
+        const target = document.querySelector(href);
+        if (target) {
+            const yOffset = -80; // Offset for the floating navbar
+            const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+        }
+    };
 
     useEffect(() => {
+        // Reset visibility ratios
+        visibilityRatios.current = {};
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(entry.target.id);
+                    visibilityRatios.current[entry.target.id] = entry.intersectionRatio;
+                });
+
+                // Find section with maximum visibility ratio
+                let maxRatio = 0;
+                let maxId = "home";
+                navLinks.forEach((link) => {
+                    const id = link.href.substring(1);
+                    const ratio = visibilityRatios.current[id] || 0;
+                    if (ratio > maxRatio) {
+                        maxRatio = ratio;
+                        maxId = id;
                     }
                 });
+
+                // Only update active section if not scrolling from a click
+                if (!scrollTimeoutRef.current) {
+                    setActiveSection(maxId);
+                }
             },
             {
-                threshold: 0.3,
-                rootMargin: "-80px 0px 0px 0px", // Offset for floating navbar
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                rootMargin: "-80px 0px -20% 0px", // Offset top for navbar, bottom to prioritize upper sections
             },
         );
 
-        // Observe in reverse order so that top sections get priority
-        [...navLinks].reverse().forEach((link) => {
+        navLinks.forEach((link) => {
             const section = document.querySelector(link.href);
             if (section) {
                 observer.observe(section);
@@ -43,16 +77,20 @@ export default function Navbar() {
         return () => observer.disconnect();
     }, []);
 
-    const handleScroll = (e, href) => {
-        e.preventDefault();
-        setIsMenuOpen(false);
-        const target = document.querySelector(href);
-        if (target) {
-            const yOffset = -80; // Offset for the floating navbar
-            const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({ top: y, behavior: "smooth" });
-        }
-    };
+    // Reset scroll timeout when scroll stops
+    useEffect(() => {
+        const handleScrollEnd = () => {
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
+            scrollTimeoutRef.current = setTimeout(() => {
+                scrollTimeoutRef.current = null;
+            }, 500);
+        };
+
+        window.addEventListener("scroll", handleScrollEnd);
+        return () => window.removeEventListener("scroll", handleScrollEnd);
+    }, []);
 
     return (
         <>
