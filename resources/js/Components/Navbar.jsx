@@ -26,10 +26,14 @@ export default function Navbar() {
                     }
                 });
             },
-            { threshold: 0.3 },
+            {
+                threshold: 0.3,
+                rootMargin: "-80px 0px 0px 0px", // Offset for floating navbar
+            },
         );
 
-        navLinks.forEach((link) => {
+        // Observe in reverse order so that top sections get priority
+        [...navLinks].reverse().forEach((link) => {
             const section = document.querySelector(link.href);
             if (section) {
                 observer.observe(section);
