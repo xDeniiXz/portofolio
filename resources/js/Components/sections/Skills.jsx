@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import SectionTitle from "../ui/SectionTitle";
 import AnimationWrapper from "../ui/AnimationWrapper";
@@ -49,7 +48,7 @@ const skills = [
 
 export default function Skills() {
     return (
-        <section id="skills" className="py-16 sm:py-20 scroll-mt-20">
+        <section id="skills" className="py-16 sm:py-20 scroll-mt-24">
             <Container>
                 <SectionTitle subtitle="Technologies I work with">
                     Full-Stack Tools
@@ -58,13 +57,11 @@ export default function Skills() {
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
                     {skills.map((skill, index) => (
                         <AnimationWrapper key={skill.name} delay={index * 0.03}>
-                            <div
-                                className="bg-slate-800/90 rounded-2xl p-4 sm:p-5 text-center border border-slate-700/50 hover:border-slate-600 hover:shadow-lg transition-all duration-150 hover:-translate-y-1 active:scale-[0.98]"
-                            >
-                                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-700/80 text-slate-200 mb-3">
+                            <div className="bg-slate-900/80 rounded-xl p-3 sm:p-4 text-center border border-slate-800 hover:border-blue-600 hover:-translate-y-1 transition-all duration-200 cursor-pointer group outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0">
+                                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-800/80 text-slate-200 group-hover:text-blue-400 group-hover:bg-blue-500/10 transition-all duration-200 mb-3 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0">
                                     <skill.icon className="w-6 h-6 sm:w-7 sm:h-7" />
                                 </div>
-                                <p className="font-medium text-slate-200 text-xs sm:text-sm">
+                                <p className="font-medium text-slate-300 group-hover:text-blue-400 text-xs sm:text-sm transition-all duration-200">
                                     {skill.name}
                                 </p>
                             </div>

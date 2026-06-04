@@ -46,7 +46,7 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
     return (
         <motion.div
             whileHover={{ y: -4 }}
-            className="bg-gray-800/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-700 flex flex-col h-full"
+            className="bg-slate-900/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-slate-800 flex flex-col h-full"
         >
             <div className="h-36 sm:h-40 overflow-hidden flex-shrink-0">
                 <img
@@ -57,11 +57,11 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
             </div>
 
             <div className="p-4 sm:p-5 flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-100 line-clamp-1">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-slate-100 line-clamp-1">
                     {project.title}
                 </h3>
 
-                <p className="text-gray-400 text-sm sm:text-base mb-3 leading-relaxed line-clamp-2 flex-grow">
+                <p className="text-slate-400 text-sm sm:text-base mb-3 leading-relaxed line-clamp-2 flex-grow">
                     {project.description}
                 </p>
 
@@ -69,7 +69,7 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
                     {project.tech.map((tech) => (
                         <span
                             key={tech}
-                            className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs sm:text-sm rounded-full border border-blue-500/20"
+                            className="px-3 py-1 bg-slate-800/60 text-slate-300 text-xs sm:text-sm rounded-full border border-slate-700"
                         >
                             {tech}
                         </span>
@@ -78,38 +78,32 @@ const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
 
                 <div className="flex gap-2 mt-auto">
                     {project.isPrivate ? (
-                        <motion.button
+                        <button
                             onClick={() => onCodeClick(project)}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gray-700/50 text-gray-300 rounded-xl hover:bg-gray-700 transition-all duration-200 text-sm"
+                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-slate-800/60 text-slate-300 rounded-xl hover:bg-slate-800 transition-all duration-150 text-sm active:scale-[0.98] hover:-translate-y-0.5"
                         >
                             <FaCode className="w-4 h-4" />
                             <span className="font-medium">Code</span>
-                        </motion.button>
+                        </button>
                     ) : (
-                        <motion.a
+                        <a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-gray-700/50 text-gray-300 rounded-xl hover:bg-gray-700 transition-all duration-200 text-sm"
+                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-slate-800/60 text-slate-300 rounded-xl hover:bg-slate-800 transition-all duration-150 text-sm active:scale-[0.98] hover:-translate-y-0.5"
                         >
                             <FaCode className="w-4 h-4" />
                             <span className="font-medium">Code</span>
-                        </motion.a>
+                        </a>
                     )}
 
-                    <motion.button
+                    <button
                         onClick={() => onDemoClick(project)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 shadow-md text-sm"
+                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-150 text-sm active:scale-[0.98] hover:-translate-y-0.5"
                     >
                         <FaExternalLinkAlt className="w-4 h-4" />
                         <span className="font-medium">Demo</span>
-                    </motion.button>
+                    </button>
                 </div>
             </div>
         </motion.div>
@@ -148,7 +142,7 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className="py-16 sm:py-20 lg:py-24 bg-gray-900/50 scroll-mt-20"
+            className="py-16 sm:py-20 lg:py-24 scroll-mt-24"
         >
             <Container>
                 <SectionTitle subtitle="Some things I've built">

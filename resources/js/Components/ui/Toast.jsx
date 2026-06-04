@@ -47,7 +47,7 @@ const Toast = ({ isVisible, onClose, message, type = "info", title }) => {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.15 }}
                         onClick={type !== "loading" ? onClose : undefined}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                     />
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -56,7 +56,7 @@ const Toast = ({ isVisible, onClose, message, type = "info", title }) => {
                         transition={{ duration: 0.15 }}
                         className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none p-4"
                     >
-                        <div className="pointer-events-auto bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-700 max-w-md w-full overflow-hidden">
+                        <div className="pointer-events-auto bg-slate-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-800 max-w-md w-full overflow-hidden">
                             <div className="p-6">
                                 <div className="flex items-start justify-between mb-4">
                                     <div
@@ -69,24 +69,24 @@ const Toast = ({ isVisible, onClose, message, type = "info", title }) => {
                                     {type !== "loading" && (
                                         <button
                                             onClick={onClose}
-                                            className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-gray-700 rounded-lg"
+                                            className="text-slate-400 hover:text-white transition-colors p-1.5 hover:bg-slate-800 rounded-lg"
                                         >
                                             <FaTimes className="w-4 h-4" />
                                         </button>
                                     )}
                                 </div>
 
-                                <h3 className="text-lg sm:text-xl font-semibold text-gray-100 mb-2">
+                                <h3 className="text-lg sm:text-xl font-semibold text-slate-100 mb-2">
                                     {title || defaultTitle[type]}
                                 </h3>
-                                <p className="text-gray-300 text-sm leading-relaxed">
+                                <p className="text-slate-400 text-sm leading-relaxed">
                                     {message}
                                 </p>
 
                                 {type !== "loading" && (
                                     <button
                                         onClick={onClose}
-                                        className="mt-6 w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
+                                        className="mt-6 w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-lg shadow-blue-600/20 transition-all duration-200"
                                     >
                                         Got it
                                     </button>

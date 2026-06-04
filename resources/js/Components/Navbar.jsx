@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, Code2 } from "lucide-react";
 import Container from "./ui/Container";
 
 const navLinks = [
@@ -10,7 +10,6 @@ const navLinks = [
     { name: "Resume", href: "#resume" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Certificates", href: "#certificates" },
     { name: "Contact", href: "#contact" },
 ];
 
@@ -45,82 +44,78 @@ export default function Navbar() {
         setIsMenuOpen(false);
         const target = document.querySelector(href);
         if (target) {
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-            });
+            const yOffset = -80; // Offset for the floating navbar
+            const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
         }
     };
 
     return (
         <>
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/85 backdrop-blur-xl border-b border-gray-800">
-                <Container>
-                    <div className="flex justify-between items-center h-20">
-                        <motion.a
-                            href="#home"
-                            onClick={(e) => handleScroll(e, "#home")}
-                            whileHover={{ scale: 1.05 }}
-                            className="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
-                        >
-                            DeniiXz
-                        </motion.a>
+            <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl">
+                <div className="bg-slate-900/80 backdrop-blur-2xl border border-slate-800/60 rounded-2xl shadow-xl">
+                    <Container className="!px-4 sm:!px-6">
+                        <div className="flex justify-between items-center h-16">
+                            <motion.a
+                                href="#home"
+                                onClick={(e) => handleScroll(e, "#home")}
+                                whileHover={{ scale: 1.03 }}
+                                className="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-100"
+                            >
+                                <Code2 className="w-6 h-6 text-blue-400" />
+                                DeniiXz
+                            </motion.a>
 
-                        <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-                            {navLinks.map((link) => {
-                                const isActive =
-                                    activeSection === link.href.substring(1);
-                                return (
-                                    <motion.a
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={(e) =>
-                                            handleScroll(e, link.href)
-                                        }
-                                        whileHover={{ y: -2 }}
-                                        className={clsx(
-                                            "text-sm font-semibold transition-all duration-300 relative",
-                                            isActive
-                                                ? "text-blue-400"
-                                                : "text-gray-400 hover:text-blue-400",
-                                        )}
-                                    >
-                                        {link.name}
-                                        {isActive && (
-                                            <motion.div
-                                                layoutId="activeNavLink"
-                                                className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
-                                            />
-                                        )}
-                                    </motion.a>
-                                );
-                            })}
+                            <div className="hidden lg:flex items-center space-x-1">
+                                {navLinks.map((link) => {
+                                    const isActive =
+                                        activeSection === link.href.substring(1);
+                                    return (
+                                        <motion.a
+                                            key={link.name}
+                                            href={link.href}
+                                            onClick={(e) =>
+                                                handleScroll(e, link.href)
+                                            }
+                                            whileHover={{ y: -1 }}
+                                            className={clsx(
+                                                "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200",
+                                                isActive
+                                                    ? "bg-blue-600 text-white"
+                                                    : "text-slate-400 hover:text-slate-100 hover:bg-slate-800/60"
+                                            )}
+                                        >
+                                            {link.name}
+                                        </motion.a>
+                                    );
+                                })}
+                            </div>
+
+                            <button
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className="lg:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
+                            >
+                                {isMenuOpen ? (
+                                    <X className="w-6 h-6" />
+                                ) : (
+                                    <Menu className="w-6 h-6" />
+                                )}
+                            </button>
                         </div>
-
-                        <button
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="lg:hidden p-2 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
-                        >
-                            {isMenuOpen ? (
-                                <X className="w-6 h-6" />
-                            ) : (
-                                <Menu className="w-6 h-6" />
-                            )}
-                        </button>
-                    </div>
-                </Container>
+                    </Container>
+                </div>
             </nav>
 
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-x-0 top-20 z-40 bg-gray-900/98 backdrop-blur-xl border-b border-gray-800 lg:hidden"
+                        className="fixed inset-x-4 top-24 z-40 lg:hidden"
                     >
-                        <div className="py-4 px-6 space-y-2">
+                        <div className="bg-slate-900/95 backdrop-blur-2xl border border-slate-800/60 rounded-2xl shadow-xl py-3 px-4 space-y-1">
                             {navLinks.map((link) => {
                                 const isActive =
                                     activeSection === link.href.substring(1);
@@ -134,16 +129,13 @@ export default function Navbar() {
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         className={clsx(
-                                            "flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-semibold transition-all duration-200",
+                                            "flex items-center px-4 py-3 rounded-xl text-base font-medium transition-all duration-200",
                                             isActive
-                                                ? "bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                                                : "text-gray-300 hover:bg-gray-800 hover:text-white",
+                                                ? "bg-blue-600 text-white"
+                                                : "text-slate-300 hover:bg-slate-800/60",
                                         )}
                                     >
                                         {link.name}
-                                        {isActive && (
-                                            <ChevronRight className="w-4 h-4" />
-                                        )}
                                     </motion.a>
                                 );
                             })}

@@ -133,7 +133,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-16 scroll-mt-20">
+        <section id="contact" className="py-16 sm:py-20 scroll-mt-24">
             <Container>
                 <SectionTitle subtitle="Let's work together">
                     Contact Me
@@ -142,18 +142,18 @@ export default function Contact() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
                     <AnimationWrapper>
                         <div className="space-y-6">
-                            <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-700">
-                                <h3 className="text-lg sm:text-xl font-semibold mb-6 text-gray-100">
+                            <div className="bg-slate-900/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-slate-800">
+                                <h3 className="text-lg sm:text-xl font-semibold mb-6 text-slate-100">
                                     Contact Information
                                 </h3>
 
                                 <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-gray-300">
+                                    <div className="flex items-center gap-3 text-slate-300">
                                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
                                             <FaEnvelope className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                                         </div>
                                         <div>
-                                            <p className="text-xs text-gray-500">
+                                            <p className="text-xs text-slate-500">
                                                 Email
                                             </p>
                                             <p className="text-sm sm:text-base font-medium">
@@ -162,12 +162,12 @@ export default function Contact() {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center gap-3 text-gray-300">
+                                    <div className="flex items-center gap-3 text-slate-300">
                                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
                                             <FaMapMarkerAlt className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                                         </div>
                                         <div>
-                                            <p className="text-xs text-gray-500">
+                                            <p className="text-xs text-slate-500">
                                                 Location
                                             </p>
                                             <p className="text-sm sm:text-base font-medium">
@@ -178,7 +178,7 @@ export default function Contact() {
                                 </div>
 
                                 <div className="mt-6">
-                                    <h4 className="text-sm sm:text-base font-semibold mb-4 text-gray-200">
+                                    <h4 className="text-sm sm:text-base font-semibold mb-4 text-slate-200">
                                         Follow Me
                                     </h4>
                                     <div className="flex gap-3">
@@ -186,7 +186,7 @@ export default function Contact() {
                                             {
                                                 icon: FaGithub,
                                                 href: "https://github.com/xDeniiXz",
-                                                color: "bg-gray-700/50 hover:bg-gray-700",
+                                                color: "bg-slate-800/60 hover:bg-slate-800",
                                             },
                                             {
                                                 icon: FaLinkedin,
@@ -196,21 +196,22 @@ export default function Contact() {
                                             {
                                                 icon: FaInstagram,
                                                 href: "https://www.instagram.com/dnii.xz?igsh=cjFkYnJ0cXd5NGlo",
-                                                color: "bg-blue-500/10 hover:bg-blue-500/20",
+                                                color: "bg-purple-500/10 hover:bg-purple-500/20",
                                             },
                                         ].map((social, index) => (
-                                            <motion.a
+                                            <a
                                                 key={index}
                                                 href={social.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                whileHover={{
-                                                    scale: 1.1,
-                                                }}
-                                                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-gray-300 ${social.color} transition-all duration-200`}
+                                                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-slate-300 transition-all duration-150 active:scale-[0.95] hover:-translate-y-0.5 ${
+                                                    social.href.includes("instagram")
+                                                        ? "hover:text-purple-400"
+                                                        : "hover:text-blue-400"
+                                                } ${social.color}`}
                                             >
-                                                <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                                            </motion.a>
+                                                <social.icon className="w-5 h-5" />
+                                            </a>
                                         ))}
                                     </div>
                                 </div>
@@ -219,14 +220,14 @@ export default function Contact() {
                     </AnimationWrapper>
 
                     <AnimationWrapper delay={0.2}>
-                        <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-700">
-                            <h3 className="text-lg sm:text-xl font-semibold mb-6 text-gray-100">
+                        <div className="bg-slate-900/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-slate-800">
+                            <h3 className="text-lg sm:text-xl font-semibold mb-6 text-slate-100">
                                 Send a Message
                             </h3>
 
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div>
-                                    <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
+                                    <label className="block text-xs sm:text-sm font-medium text-slate-400 mb-2">
                                         Name
                                     </label>
                                     <input
@@ -237,14 +238,14 @@ export default function Contact() {
                                         disabled={
                                             !hasReadNotice || isOnCooldown
                                         }
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                                        className="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-800/60 text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                                         placeholder="Your name"
                                         required
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
+                                    <label className="block text-xs sm:text-sm font-medium text-slate-400 mb-2">
                                         Email
                                     </label>
                                     <input
@@ -255,14 +256,14 @@ export default function Contact() {
                                         disabled={
                                             !hasReadNotice || isOnCooldown
                                         }
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                                        className="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-800/60 text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                                         placeholder="your@email.com"
                                         required
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-2">
+                                    <label className="block text-xs sm:text-sm font-medium text-slate-400 mb-2">
                                         Message
                                     </label>
                                     <textarea
@@ -273,7 +274,7 @@ export default function Contact() {
                                         disabled={
                                             !hasReadNotice || isOnCooldown
                                         }
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-gray-900/50 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                                        className="w-full px-4 py-3 rounded-xl border border-slate-800 bg-slate-800/60 text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200 resize-none disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                                         placeholder="Your message..."
                                         required
                                     ></textarea>
@@ -285,39 +286,25 @@ export default function Contact() {
                                         onClick={() =>
                                             setShowImportantNotice(true)
                                         }
-                                        className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
+                                        className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm transition-all duration-150 active:scale-[0.98] hover:-translate-y-0.5"
                                     >
                                         Read Important Notice
                                     </button>
                                 )}
 
-                                <motion.button
+                                <button
                                     type="submit"
                                     disabled={
                                         !hasReadNotice ||
                                         isOnCooldown ||
                                         isSubmitting
                                     }
-                                    whileHover={
-                                        hasReadNotice &&
-                                        !isOnCooldown &&
-                                        !isSubmitting
-                                            ? { scale: 1.02 }
-                                            : {}
-                                    }
-                                    whileTap={
-                                        hasReadNotice &&
-                                        !isOnCooldown &&
-                                        !isSubmitting
-                                            ? { scale: 0.98 }
-                                            : {}
-                                    }
-                                    className={`w-full py-2.5 rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 ${
+                                    className={`w-full py-2.5 rounded-xl font-medium text-sm transition-all duration-150 flex items-center justify-center gap-2 ${
                                         !hasReadNotice ||
                                         isOnCooldown ||
                                         isSubmitting
-                                            ? "bg-gray-700 text-gray-400 cursor-not-allowed"
-                                            : "bg-blue-600 hover:bg-blue-700 text-white"
+                                            ? "bg-slate-800 text-slate-400 cursor-not-allowed"
+                                            : "bg-blue-600 hover:bg-blue-700 text-white active:scale-[0.98] hover:-translate-y-0.5"
                                     }`}
                                 >
                                     {isOnCooldown ? (
@@ -327,11 +314,6 @@ export default function Contact() {
                                                 Please wait {cooldownTime} min
                                             </span>
                                         </>
-                                    ) : isSubmitting ? (
-                                        <>
-                                            <FaSpinner className="w-4 h-4 animate-spin" />
-                                            <span>Sending...</span>
-                                        </>
                                     ) : !hasReadNotice ? (
                                         <>
                                             <FaInfoCircle className="w-4 h-4" />
@@ -339,13 +321,18 @@ export default function Contact() {
                                                 Read Important Notice First
                                             </span>
                                         </>
+                                    ) : isSubmitting ? (
+                                        <>
+                                            <FaSpinner className="w-4 h-4 animate-spin" />
+                                            <span>Sending...</span>
+                                        </>
                                     ) : (
                                         <>
                                             <span>Send Message</span>
                                             <FaPaperPlane className="w-4 h-4" />
                                         </>
                                     )}
-                                </motion.button>
+                                </button>
                             </form>
                         </div>
                     </AnimationWrapper>
@@ -361,7 +348,7 @@ export default function Contact() {
                                     onClick={() =>
                                         setShowImportantNotice(false)
                                     }
-                                    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                                 />
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
@@ -370,7 +357,7 @@ export default function Contact() {
                                     transition={{ duration: 0.15 }}
                                     className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none p-4"
                                 >
-                                    <div className="pointer-events-auto bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-700 max-w-md w-full overflow-hidden">
+                                    <div className="pointer-events-auto bg-slate-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-800 max-w-md w-full overflow-hidden">
                                         <div className="p-6">
                                             <div className="flex items-start justify-between mb-4">
                                                 <div className="bg-yellow-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
@@ -382,16 +369,16 @@ export default function Contact() {
                                                             false,
                                                         )
                                                     }
-                                                    className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-gray-700 rounded-lg"
+                                                    className="text-slate-400 hover:text-white transition-colors p-1.5 hover:bg-slate-800 rounded-lg"
                                                 >
                                                     <FaTimes className="w-4 h-4" />
                                                 </button>
                                             </div>
 
-                                            <h3 className="text-xl font-semibold text-gray-100 mb-3">
+                                            <h3 className="text-xl font-semibold text-slate-100 mb-3">
                                                 Important Notice
                                             </h3>
-                                            <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                                            <p className="text-slate-300 text-sm leading-relaxed mb-4">
                                                 To prevent spam, you can only
                                                 send one message every 30
                                                 minutes. Please review your
@@ -399,7 +386,7 @@ export default function Contact() {
                                                 sending.
                                             </p>
 
-                                            <ul className="text-gray-300 text-sm space-y-1.5 mb-6">
+                                            <ul className="text-slate-300 text-sm space-y-1.5 mb-6">
                                                 <li className="flex items-start gap-2">
                                                     <span className="text-yellow-400 mt-0.5">
                                                         •
@@ -438,7 +425,7 @@ export default function Contact() {
                                                         false,
                                                     );
                                                 }}
-                                                className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg transition-all duration-200"
+                                                className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium text-sm transition-all duration-150 active:scale-[0.98] hover:-translate-y-0.5"
                                             >
                                                 I Understand
                                             </button>

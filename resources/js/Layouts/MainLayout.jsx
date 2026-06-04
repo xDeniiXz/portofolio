@@ -9,9 +9,9 @@ export default function MainLayout({ children }) {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gray-950">
+        <div className="min-h-screen bg-slate-950 text-slate-200 antialiased">
             <Navbar />
-            <main className="pt-16">{children}</main>
+            <main>{children}</main>
             <Footer />
             <ScrollToTop />
         </div>
