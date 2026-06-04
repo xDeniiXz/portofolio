@@ -33,8 +33,8 @@ const educations = [
 const certificates = [
     {
         year: "2025",
-        title: "PT. Arkamaya Certificate",
-        issuer: "Internship Program",
+        title: "Certificate of Appreciation",
+        issuer: "Internship Program at PT. Arkamaya",
         link: "https://drive.google.com/file/d/1Q4_3DAZSXzo94IJcAm6C2D2JXjV4r4Ir/view?usp=drive_link",
     },
 ];
