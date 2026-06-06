@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
 import { Menu, X, Code2 } from "lucide-react";
@@ -13,84 +13,142 @@ const navLinks = [
     { name: "Contact", href: "#contact" },
 ];
 
+const NAVBAR_OFFSET = 96;
+const OBSERVER_THRESHOLDS = Array.from(
+    { length: 11 },
+    (_, index) => index / 10,
+);
+
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState("home");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const visibilityRatios = useRef({});
-    const scrollTimeoutRef = useRef(null);
+    const animationFrameRef = useRef(null);
 
-    // Handle click on nav links: set active immediately
     const handleScroll = (e, href) => {
         e.preventDefault();
         setIsMenuOpen(false);
-        const sectionId = href.substring(1);
-        setActiveSection(sectionId);
 
         const target = document.querySelector(href);
         if (target) {
-            const yOffset = -80; // Offset for the floating navbar
-            const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            const y =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                NAVBAR_OFFSET;
             window.scrollTo({ top: y, behavior: "smooth" });
         }
     };
 
+    const updateActiveSection = useCallback(() => {
+        const sections = navLinks
+            .map((link) => document.querySelector(link.href))
+            .filter(Boolean);
+
+        if (!sections.length) {
+            return;
+        }
+
+        const viewportHeight = window.innerHeight;
+        const activationLine = NAVBAR_OFFSET + viewportHeight * 0.18;
+
+        const visibleSections = sections
+            .map((section) => {
+                const rect = section.getBoundingClientRect();
+                const visibleTop = Math.max(rect.top, NAVBAR_OFFSET);
+                const visibleBottom = Math.min(rect.bottom, viewportHeight);
+                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+                return {
+                    id: section.id,
+                    rectTop: rect.top,
+                    visibleHeight,
+                    isVisible: visibleHeight > 0,
+                    coversActivationLine:
+                        rect.top <= activationLine &&
+                        rect.bottom >= activationLine,
+                    distanceToNavbar: Math.abs(rect.top - NAVBAR_OFFSET),
+                };
+            })
+            .filter((section) => section.isVisible);
+
+        if (!visibleSections.length) {
+            const isAtPageBottom =
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight - 2;
+
+            if (isAtPageBottom) {
+                setActiveSection("contact");
+            }
+            return;
+        }
+
+        const prioritizedSection = visibleSections.find(
+            (section) => section.coversActivationLine,
+        );
+
+        const nextSection =
+            prioritizedSection ??
+            [...visibleSections].sort(
+                (a, b) =>
+                    b.visibleHeight - a.visibleHeight ||
+                    a.distanceToNavbar - b.distanceToNavbar ||
+                    a.rectTop - b.rectTop,
+            )[0];
+
+        setActiveSection((current) =>
+            current === nextSection.id ? current : nextSection.id,
+        );
+    }, []);
+
     useEffect(() => {
-        // Reset visibility ratios
-        visibilityRatios.current = {};
+        const scheduleActiveSectionUpdate = () => {
+            if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
+            }
+
+            animationFrameRef.current = requestAnimationFrame(() => {
+                updateActiveSection();
+            });
+        };
+
+        const sections = navLinks
+            .map((link) => document.querySelector(link.href))
+            .filter(Boolean);
+
+        if (!sections.length) {
+            return undefined;
+        }
 
         const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    visibilityRatios.current[entry.target.id] = entry.intersectionRatio;
-                });
-
-                // Find section with maximum visibility ratio
-                let maxRatio = 0;
-                let maxId = "home";
-                navLinks.forEach((link) => {
-                    const id = link.href.substring(1);
-                    const ratio = visibilityRatios.current[id] || 0;
-                    if (ratio > maxRatio) {
-                        maxRatio = ratio;
-                        maxId = id;
-                    }
-                });
-
-                // Only update active section if not scrolling from a click
-                if (!scrollTimeoutRef.current) {
-                    setActiveSection(maxId);
-                }
+            () => {
+                scheduleActiveSectionUpdate();
             },
             {
-                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-                rootMargin: "-80px 0px -20% 0px", // Offset top for navbar, bottom to prioritize upper sections
+                threshold: OBSERVER_THRESHOLDS,
+                rootMargin: `-${NAVBAR_OFFSET}px 0px -55% 0px`,
             },
         );
 
-        navLinks.forEach((link) => {
-            const section = document.querySelector(link.href);
-            if (section) {
-                observer.observe(section);
-            }
+        sections.forEach((section) => {
+            observer.observe(section);
         });
 
-        return () => observer.disconnect();
-    }, []);
+        window.addEventListener("scroll", scheduleActiveSectionUpdate, {
+            passive: true,
+        });
+        window.addEventListener("resize", scheduleActiveSectionUpdate);
 
-    // Reset scroll timeout when scroll stops
-    useEffect(() => {
-        const handleScrollEnd = () => {
-            if (scrollTimeoutRef.current) {
-                clearTimeout(scrollTimeoutRef.current);
+        scheduleActiveSectionUpdate();
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("scroll", scheduleActiveSectionUpdate);
+            window.removeEventListener("resize", scheduleActiveSectionUpdate);
+
+            if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
             }
-            scrollTimeoutRef.current = setTimeout(() => {
-                scrollTimeoutRef.current = null;
-            }, 500);
         };
-
-        window.addEventListener("scroll", handleScrollEnd);
-        return () => window.removeEventListener("scroll", handleScrollEnd);
-    }, []);
+    }, [updateActiveSection]);
 
     return (
         <>
