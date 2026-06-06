@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { FaChevronUp } from "react-icons/fa";
 
 export default function ScrollToTop() {
@@ -28,17 +28,12 @@ export default function ScrollToTop() {
     return (
         <AnimatePresence>
             {isVisible && (
-                <motion.button
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 20, scale: 0.8 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                <button
                     onClick={scrollToTop}
-                    className="fixed bottom-6 right-6 z-50 w-10 h-10 sm:w-12 sm:h-12 bg-tech-green/10 text-tech-green hover:bg-tech-green/20 border border-tech-green/30 flex items-center justify-center transition-all duration-150"
+                    className="fixed bottom-6 right-6 z-50 w-10 h-10 sm:w-12 sm:h-12 bg-tech-green/10 text-tech-green hover:bg-tech-green/20 border border-tech-green/30 flex items-center justify-center transition-colors duration-150"
                 >
                     <FaChevronUp className="w-4 h-4 sm:w-5 sm:h-5" />
-                </motion.button>
+                </button>
             )}
         </AnimatePresence>
     );
