@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Container from "./ui/Container";
 
 const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Resume", href: "#resume" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "home", href: "#home" },
+    { name: "about", href: "#about" },
+    { name: "resume", href: "#resume" },
+    { name: "skills", href: "#skills" },
+    { name: "projects", href: "#projects" },
+    { name: "contact", href: "#contact" },
 ];
 
 const NAVBAR_OFFSET = 96;
@@ -153,47 +153,42 @@ export default function Navbar() {
     return (
         <>
             <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl">
-                <div className="bg-slate-900/80 backdrop-blur-2xl border border-slate-800/60 rounded-2xl shadow-xl">
+                <div className="bg-tech-card/90 backdrop-blur-xl border border-tech-border">
                     <Container className="!px-4 sm:!px-6">
                         <div className="flex justify-between items-center h-16">
-                            <motion.a
-                                href="#home"
-                                onClick={(e) => handleScroll(e, "#home")}
-                                whileHover={{ scale: 1.03 }}
-                                className="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-100"
-                            >
-                                <Code2 className="w-6 h-6 text-blue-400" />
+                            <div className="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-100 font-mono">
+                                <span className="text-tech-green">\</span>
                                 DeniiXz
-                            </motion.a>
+                            </div>
 
-                            <div className="hidden lg:flex items-center space-x-1">
+                            <div className="hidden lg:flex items-center space-x-2">
                                 {navLinks.map((link) => {
                                     const isActive =
                                         activeSection === link.href.substring(1);
                                     return (
-                                        <motion.a
+                                        <a
                                             key={link.name}
                                             href={link.href}
                                             onClick={(e) =>
                                                 handleScroll(e, link.href)
                                             }
-                                            whileHover={{ y: -1 }}
                                             className={clsx(
-                                                "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200",
+                                                "px-3 py-2 text-sm font-mono transition-colors duration-150 uppercase tracking-wider",
                                                 isActive
-                                                    ? "bg-blue-600 text-white"
-                                                    : "text-slate-400 hover:text-slate-100 hover:bg-slate-800/60"
+                                                    ? "text-tech-green"
+                                                    : "text-slate-500 hover:text-slate-300"
                                             )}
                                         >
+                                            {isActive && <span className="text-tech-green mr-1">#</span>}
                                             {link.name}
-                                        </motion.a>
+                                        </a>
                                     );
                                 })}
                             </div>
 
                             <button
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="lg:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
+                                className="lg:hidden p-2 text-slate-400 hover:text-tech-green transition-colors"
                             >
                                 {isMenuOpen ? (
                                     <X className="w-6 h-6" />
@@ -215,28 +210,27 @@ export default function Navbar() {
                         transition={{ duration: 0.2 }}
                         className="fixed inset-x-4 top-24 z-40 lg:hidden"
                     >
-                        <div className="bg-slate-900/95 backdrop-blur-2xl border border-slate-800/60 rounded-2xl shadow-xl py-3 px-4 space-y-1">
+                        <div className="bg-tech-card/95 backdrop-blur-xl border border-tech-border py-4 px-6 space-y-3">
                             {navLinks.map((link) => {
                                 const isActive =
                                     activeSection === link.href.substring(1);
                                 return (
-                                    <motion.a
+                                    <a
                                         key={link.name}
                                         href={link.href}
                                         onClick={(e) =>
                                             handleScroll(e, link.href)
                                         }
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
                                         className={clsx(
-                                            "flex items-center px-4 py-3 rounded-xl text-base font-medium transition-all duration-200",
+                                            "flex items-center py-2 text-base font-mono transition-colors duration-150 uppercase tracking-wider",
                                             isActive
-                                                ? "bg-blue-600 text-white"
-                                                : "text-slate-300 hover:bg-slate-800/60",
+                                                ? "text-tech-green"
+                                                : "text-slate-500 hover:text-slate-300",
                                         )}
                                     >
+                                        {isActive && <span className="text-tech-green mr-2">#</span>}
                                         {link.name}
-                                    </motion.a>
+                                    </a>
                                 );
                             })}
                         </div>

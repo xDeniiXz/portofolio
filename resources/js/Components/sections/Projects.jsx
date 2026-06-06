@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { FaCode, FaExternalLinkAlt } from "react-icons/fa";
 import Container from "../ui/Container";
 import SectionTitle from "../ui/SectionTitle";
@@ -44,69 +43,68 @@ const projects = [
 
 const ProjectCard = ({ project, onDemoClick, onCodeClick }) => {
     return (
-        <motion.div
-            whileHover={{ y: -4 }}
-            className="bg-slate-900/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-slate-800 flex flex-col h-full"
+        <div
+            className="bg-tech-card border border-tech-border hover:border-tech-green/30 transition-all duration-150 flex flex-col h-full"
         >
-            <div className="h-36 sm:h-40 overflow-hidden flex-shrink-0">
+            <div className="h-36 sm:h-40 overflow-hidden flex-shrink-0 border-b border-tech-border">
                 <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full object-cover"
                 />
             </div>
 
-            <div className="p-4 sm:p-5 flex flex-col flex-grow">
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-slate-100 line-clamp-1">
-                    {project.title}
-                </h3>
+            <div className="p-5 flex flex-col flex-grow">
+                <h3 className="text-base sm:text-lg font-semibold mb-2 text-slate-100 line-clamp-1 font-mono">
+                                    {project.title}
+                                </h3>
 
-                <p className="text-slate-400 text-sm sm:text-base mb-3 leading-relaxed line-clamp-2 flex-grow">
-                    {project.description}
-                </p>
+                                <p className="text-slate-400 text-xs sm:text-sm mb-4 leading-relaxed line-clamp-3 flex-grow font-mono">
+                                    {project.description}
+                                </p>
 
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.tech.map((tech) => (
-                        <span
-                            key={tech}
-                            className="px-3 py-1 bg-slate-800/60 text-slate-300 text-xs sm:text-sm rounded-full border border-slate-700"
-                        >
-                            {tech}
-                        </span>
-                    ))}
-                </div>
+                                <div className="flex flex-wrap gap-2 mb-5">
+                                    {project.tech.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="px-2 py-1 text-slate-400 text-[11px] font-mono border border-tech-border uppercase tracking-wider"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
 
-                <div className="flex gap-2 mt-auto">
-                    {project.isPrivate ? (
-                        <button
-                            onClick={() => onCodeClick(project)}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-slate-800/60 text-slate-300 rounded-xl hover:bg-slate-800 transition-all duration-150 text-sm active:scale-[0.98] hover:-translate-y-0.5"
-                        >
-                            <FaCode className="w-4 h-4" />
-                            <span className="font-medium">Code</span>
-                        </button>
-                    ) : (
-                        <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-slate-800/60 text-slate-300 rounded-xl hover:bg-slate-800 transition-all duration-150 text-sm active:scale-[0.98] hover:-translate-y-0.5"
-                        >
-                            <FaCode className="w-4 h-4" />
-                            <span className="font-medium">Code</span>
-                        </a>
-                    )}
+                                <div className="flex gap-2 mt-auto">
+                                    {project.isPrivate ? (
+                                        <button
+                                            onClick={() => onCodeClick(project)}
+                                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-slate-400 hover:text-tech-green border border-tech-border font-mono text-xs transition-all duration-150 active:scale-[0.98]"
+                                        >
+                                            <FaCode className="w-3 h-3" />
+                                            <span className="uppercase tracking-wider">Code</span>
+                                        </button>
+                                    ) : (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-slate-400 hover:text-tech-green border border-tech-border font-mono text-xs transition-all duration-150 active:scale-[0.98]"
+                                        >
+                                            <FaCode className="w-3 h-3" />
+                                            <span className="uppercase tracking-wider">Code</span>
+                                        </a>
+                                    )}
 
-                    <button
-                        onClick={() => onDemoClick(project)}
-                        className="flex-1 flex items-center justify-center gap-1.5 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-150 text-sm active:scale-[0.98] hover:-translate-y-0.5"
-                    >
-                        <FaExternalLinkAlt className="w-4 h-4" />
-                        <span className="font-medium">Demo</span>
-                    </button>
-                </div>
+                                    <button
+                                        onClick={() => onDemoClick(project)}
+                                        className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-tech-green/10 text-tech-green hover:bg-tech-green/20 border border-tech-green/30 font-mono text-xs transition-all duration-150 active:scale-[0.98]"
+                                    >
+                                        <FaExternalLinkAlt className="w-3 h-3" />
+                                        <span className="uppercase tracking-wider">Demo</span>
+                                    </button>
+                                </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 
@@ -145,11 +143,11 @@ export default function Projects() {
             className="py-16 sm:py-20 lg:py-24 scroll-mt-24"
         >
             <Container>
-                <SectionTitle subtitle="Some things I've built">
-                    Projects
+                <SectionTitle subtitle="Selected work">
+                    PROJECTS
                 </SectionTitle>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
                         <AnimationWrapper key={project.id} delay={index * 0.12}>
                             <ProjectCard

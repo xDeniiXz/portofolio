@@ -3,23 +3,32 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1f2937;
+  background: #0a0a0f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-  border-radius: 4px;
+  background: #22222f;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #2563eb, #7c3aed);
+  background: #333347;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3b82f6 #1f2937;
+  scrollbar-color: #22222f #0a0a0f;
+}
+
+html, body {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace, system-ui;
+}
+
+::selection {
+  background: #00ff9f33;
+  color: #00ff9f;
 }

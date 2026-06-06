@@ -9,7 +9,7 @@ export default function MainLayout({ children }) {
     }, []);
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-200 antialiased">
+        <div className="min-h-screen bg-tech-dark text-slate-200 antialiased">
             <Navbar />
             <main>{children}</main>
             <Footer />

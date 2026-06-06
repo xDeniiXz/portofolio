@@ -50,20 +50,22 @@ export default function Skills() {
     return (
         <section id="skills" className="py-16 sm:py-20 scroll-mt-24">
             <Container>
-                <SectionTitle subtitle="Technologies I work with">
-                    Full-Stack Tools
+                <SectionTitle subtitle="Tech stack">
+                    TOOLS I USE DAILY
                 </SectionTitle>
 
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                     {skills.map((skill, index) => (
                         <AnimationWrapper key={skill.name} delay={index * 0.03}>
-                            <div className="bg-slate-900/80 rounded-xl p-3 sm:p-4 text-center border border-slate-800 hover:border-blue-600 hover:-translate-y-1 transition-all duration-200 cursor-pointer group outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0">
-                                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-800/80 text-slate-200 group-hover:text-blue-400 group-hover:bg-blue-500/10 transition-all duration-200 mb-3 outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0">
-                                    <skill.icon className="w-6 h-6 sm:w-7 sm:h-7" />
-                                </div>
-                                <p className="font-medium text-slate-300 group-hover:text-blue-400 text-xs sm:text-sm transition-all duration-200">
+                            <div className="group relative bg-tech-card border border-tech-border hover:border-tech-green/30 transition-all duration-150 cursor-pointer">
+                                <div className="p-4 flex flex-col items-center gap-3">
+                                    <div className="inline-flex items-center justify-center w-12 h-12 text-slate-400 group-hover:text-tech-green transition-all duration-150">
+                                        <skill.icon className="w-8 h-8" />
+                                    </div>
+                                    <p className="font-mono text-xs text-slate-400 group-hover:text-tech-green uppercase tracking-wider transition-all duration-150">
                                     {skill.name}
                                 </p>
+                                </div>
                             </div>
                         </AnimationWrapper>
                     ))}

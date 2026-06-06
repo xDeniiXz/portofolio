@@ -13,8 +13,17 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['JetBrains Mono', 'Fira Code', 'monospace', ...defaultTheme.fontFamily.sans],
+                mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
             },
+            colors: {
+                tech: {
+                    green: '#00ff9f',
+                    dark: '#0a0a0f',
+                    card: '#11111a',
+                    border: '#22222f',
+                }
+            }
         },
     },
 
